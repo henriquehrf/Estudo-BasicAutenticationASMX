@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/BasicAutenticationASMX/.vs/BasicAutenticationASMX
+/BasicAutenticationASMX/BasicAutenticationASMX/bin
+/BasicAutenticationASMX/BasicAutenticationASMX/obj
+/BasicAutenticationASMX/packages
