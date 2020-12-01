@@ -6,5 +6,7 @@ namespace BasicAutenticationASMX.Service.Interface
 	{
 		CredentialVO Generate(string ipHost);
 
+		CredentialVO GetByToken(string token);
+
 	}
 }

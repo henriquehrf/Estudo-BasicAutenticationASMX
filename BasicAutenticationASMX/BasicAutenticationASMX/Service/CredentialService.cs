@@ -7,40 +7,42 @@ using System.Text;
 
 namespace BasicAutenticationASMX.Core
 {
-	public class CredentialService: ICredentialService
+	public class CredentialService : ICredentialService
 	{
-		private readonly ICredentialDAO _credencialDAO;
+		private readonly ICredentialDAO _credentialDAO;
 
-		public CredentialService(ICredentialDAO credencialDAO)
+		public CredentialService(ICredentialDAO credentialDAO)
 		{
-			_credencialDAO = credencialDAO;
+			_credentialDAO = credentialDAO;
 		}
 
 		public CredentialVO Generate(string ipHost)
 		{
 			using (SHA512 sha512 = SHA512.Create())
 			{
-				var credential = new CredentialVO()
-				{
-					Created = DateTime.UtcNow,
-					Expired = DateTime.UtcNow.AddHours(24),
-					Active = true
-				};
-
 				StringBuilder builder = new StringBuilder();
-
 				foreach (byte hash in Convert.ToBase64String(sha512.ComputeHash(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()))))
 					builder.Append(hash.ToString("x2"));
 
-				credential.Token = builder.ToString();
-				credential.IpHost = ipHost;
+				var credential = new CredentialVO()
+				{
+					Created = DateTime.Now,
+					Expired = DateTime.Now.AddHours(24),
+					IpHost = ipHost,
+					Token = builder.ToString(),
+					Active = true
+				};
 
-				_credencialDAO.Insert(credential);
+				_credentialDAO.Insert(credential);
 				return credential;
 
 			}
 
 		}
 
+		public CredentialVO GetByToken(string token)
+		{
+			return _credentialDAO.GetByToken(token);
+		}
 	}
 }

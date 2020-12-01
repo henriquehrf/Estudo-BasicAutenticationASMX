@@ -13,7 +13,7 @@ namespace BasicAutenticationASMX.Core.Dao
 			{
 				_fakeList = new List<AuthVO>()
 				{
-					new AuthVO(){User="Henrique", Password="hh8901232"},
+					new AuthVO(){User="Henrique", Password="henrique"},
 					new AuthVO(){User="Fulano", Password="1234"}
 				};
 			}

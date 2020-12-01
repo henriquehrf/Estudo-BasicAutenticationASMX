@@ -125,17 +125,18 @@
     <Content Include="Global.asax" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
-    <Content Include="Bundle.config" />
-    <Content Include="WSAuth.asmx" />
+    <Content Include="WebService\DoSomething.asmx" />
+    <Content Include="WebService\WSAuth.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\DependencyInjection.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BaseWS.cs">
+    <Compile Include="Infrastructure\Authentication.cs" />
+    <Compile Include="WebService\BaseWS.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Dao\Interface\ICredentialDAO.cs" />
-    <Compile Include="IContainerAccessor.cs" />
+    <Compile Include="Infrastructure\IContainerAccessor.cs" />
     <Compile Include="Service\CredentialService.cs" />
     <Compile Include="Dao\AuthDAO.cs" />
     <Compile Include="Dao\BaseDAO.cs" />
@@ -163,8 +164,11 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="VO\StudentVO.cs" />
-    <Compile Include="WSAuth.asmx.cs">
+    <Compile Include="WebService\DoSomething.asmx.cs">
+      <DependentUpon>DoSomething.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebService\WSAuth.asmx.cs">
       <DependentUpon>WSAuth.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
